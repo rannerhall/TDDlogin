@@ -7,14 +7,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 
-class UsernameAndPasswordTest {
-    private UsernameAndPassword user;
+class ValidateUsernameAndPasswordTest {
+    private ValidateUsernameAndPassword user;
 
     @BeforeEach
     void setUpUser() {
         String username = "Pelle";
         String password = "123123";
-        user = new UsernameAndPassword(username, password);
+        user = new ValidateUsernameAndPassword(username, password);
     }
 
     @Test

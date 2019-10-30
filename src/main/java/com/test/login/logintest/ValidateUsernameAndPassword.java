@@ -5,7 +5,7 @@ import com.nimbusds.oauth2.sdk.util.StringUtils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class UsernameAndPassword {
+class ValidateUsernameAndPassword {
     private final int MIN_LENGTH_USERNAME = 4;
     private final int MAX_LENGTH_USERNAME = 12;
     private final int MIN_LENGHT_PASSWORD = 6;
@@ -13,7 +13,7 @@ class UsernameAndPassword {
     private String username;
     private String password;
 
-    UsernameAndPassword(String username, String password) {
+    ValidateUsernameAndPassword(String username, String password) {
         this.username = username;
         this.password = password;
     }

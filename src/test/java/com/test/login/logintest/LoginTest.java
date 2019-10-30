@@ -7,29 +7,38 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LoginTest {
-    private UsernameAndPassword user;
+    private ValidateUsernameAndPassword user;
     private Login login;
 
     @BeforeEach
     void setUpUserAndLogin() {
         String username = "Pelle";
         String password = "123123";
-        login = new Login();
-        user = new UsernameAndPassword(username, password);
+        user = new ValidateUsernameAndPassword(username, password);
+        login = new Login(user);
     }
 
     @Test
     void validate_login_success() {
-       assertTrue(login.validateLogin("Pelle", "123123", user));
+        boolean loginResult = login.validateLogin("Pelle", "123123");
+        assertTrue(loginResult);
+    }
+
+    @Test
+    void validate_login_fail() {
+    boolean loginResult = login.validateLogin("felnamn", "fellosen");
+    assertFalse(loginResult);
     }
 
     @Test
     void validate_login_incorrect_password_fail() {
-        assertFalse(login.validateLogin("Pelle", "2", user));
+        boolean loginResult = login.validateLogin("Pelle", "2");
+        assertFalse(loginResult);
     }
 
     @Test
     void validate_login_incorrect_username_fail() {
-        assertFalse(login.validateLogin("Peeeeeeeeeeeeeteeeeeeeeeeer", "123311231", user));
+        boolean loginResult = login.validateLogin("Peeeeeeeeeeeeeteeeeeeeeeeer", "123311231");
+        assertFalse(loginResult);
     }
 }
