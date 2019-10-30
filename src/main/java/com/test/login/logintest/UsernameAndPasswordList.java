@@ -6,7 +6,6 @@ import java.util.List;
 
 class UsernameAndPasswordList {
 
-
     static List<ValidateUsernameAndPassword> populateUserList() {
         List<ValidateUsernameAndPassword> users = new ArrayList<>();
         users.add(new ValidateUsernameAndPassword("anna", "losen"));

@@ -2,6 +2,7 @@ package com.test.login.logintest;
 
 import com.nimbusds.oauth2.sdk.util.StringUtils;
 
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -55,5 +56,19 @@ class ValidateUsernameAndPassword {
         CharSequence inputStr = password;
         Matcher matcher = pattern.matcher(inputStr);
         return matcher.matches();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ValidateUsernameAndPassword that = (ValidateUsernameAndPassword) o;
+        return username.equals(that.username) &&
+                password.equals(that.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, password);
     }
 }
