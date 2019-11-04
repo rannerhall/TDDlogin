@@ -28,6 +28,12 @@ class ValidateUsernameAndPasswordTest {
     }
 
     @Test
+    void username_is__empty_not_valid() {
+        user.setUsername("");
+        assertFalse(validateUsernameAndPassword.validateUsername());
+    }
+
+    @Test
     void password_format_is_valid() {
         assertThat(user.getPassword(), is("123123"));
     }

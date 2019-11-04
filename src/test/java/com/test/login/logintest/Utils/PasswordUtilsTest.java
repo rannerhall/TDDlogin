@@ -41,6 +41,4 @@ class PasswordUtilsTest {
         Optional<String> testResult2 = PasswordUtils.generateSalt(length);
         assertNotEquals(testResult1, testResult2);
     }
-
-
 }
