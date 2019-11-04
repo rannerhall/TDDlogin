@@ -1,40 +1,25 @@
 package com.test.login.logintest;
 
+import com.test.login.logintest.Password.PasswordEncryption;
 import com.test.login.logintest.Utils.PasswordUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.web.reactive.server.XpathAssertions;
 
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PasswordEncryptionTest {
-
-    String key;
-    String password;
-    String salt;
-    byte[] bytes;
-    char[] chars;
-
-
+    private String key;
+    private String password;
+    private String salt;
+    private String algorithm;
 
     @BeforeEach
     void setUpHashPassword() {
         password = "password";
         salt = PasswordUtils.generateSalt(512).get();
-        chars = password.toCharArray();
-        bytes = salt.getBytes();
         key = PasswordEncryption.hashPassword(password, salt).get();
     }
 
@@ -64,16 +49,6 @@ class PasswordEncryptionTest {
         salt = null;
         Optional<String> testResult = PasswordEncryption.hashPassword(password, salt);
         assertTrue(testResult.isEmpty());
-    }
-
-    @Test
-    void check_if_password_string_is_converted_to_char_array() {
-        assertThat(password.toCharArray(), is(chars));
-    }
-
-    @Test
-    void check_if_salt_string_is_converted_to_bytes_array() {
-        assertThat(salt.getBytes(), is(bytes));
     }
 
     @Test

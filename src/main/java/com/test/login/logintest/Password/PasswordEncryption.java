@@ -1,4 +1,4 @@
-package com.test.login.logintest;
+package com.test.login.logintest.Password;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -39,7 +39,7 @@ public class PasswordEncryption {
         }
     }
 
-    public static boolean verifyPassword(String password, String salt, String key) {
+     public static boolean verifyPassword(String password, String salt, String key) {
         Optional<String> hashedPassword = hashPassword(password, salt);
         if(!hashedPassword.get().equals(key)) {return false;}
         return hashedPassword.get().equals(key);

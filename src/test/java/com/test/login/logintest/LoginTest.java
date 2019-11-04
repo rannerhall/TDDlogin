@@ -1,5 +1,7 @@
 package com.test.login.logintest;
 
+import com.test.login.logintest.Login.Login;
+import com.test.login.logintest.User.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -7,14 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LoginTest {
-    private ValidateUsernameAndPassword user;
     private Login login;
 
     @BeforeEach
     void setUpUserAndLogin() {
         String username = "Pelle";
         String password = "123123";
-        user = new ValidateUsernameAndPassword(username, password);
+        User user = new User(username, password);
         login = new Login(user);
     }
 
