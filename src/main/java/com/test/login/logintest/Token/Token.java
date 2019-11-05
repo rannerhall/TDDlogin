@@ -1,9 +1,11 @@
 package com.test.login.logintest.Token;
 
-import java.util.UUID;
+public class Token {
 
-class Token {
-    String createValidToken() {
-        return UUID.randomUUID().toString();
+    private String token;
+
+    Token(String token) {
+        this.token = token;
     }
+
 }

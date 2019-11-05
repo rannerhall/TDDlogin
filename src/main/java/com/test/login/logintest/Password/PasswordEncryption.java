@@ -44,8 +44,8 @@ public class PasswordEncryption {
         this.KEY_LENGTH = 512;
     }
 
-    public Optional<String> hashPassword(String password, String salt) throws NoSuchAlgorithmException, InvalidKeySpecException{
-        if(password == null || salt == null) {
+    public Optional<String> hashPassword(String password, String salt) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        if (password == null || salt == null) {
             System.err.println("Parameters password or salt in hashPassword can´t be null");
             return Optional.empty();
         }
@@ -61,16 +61,18 @@ public class PasswordEncryption {
             byte[] securePassword = fac.generateSecret(spec).getEncoded();
             return Optional.of(Base64.getEncoder().encodeToString(securePassword));
         } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
-            System.err.println("Exception encountered in hashPassword()" );
+            System.err.println("Exception encountered in hashPassword()");
             throw ex;
         } finally {
             spec.clearPassword();
         }
     }
 
-     public boolean verifyPassword(String password, String salt, String key) throws InvalidKeySpecException, NoSuchAlgorithmException {
+    public boolean verifyPassword(String password, String salt, String key) throws InvalidKeySpecException, NoSuchAlgorithmException {
         Optional<String> hashedPassword = hashPassword(password, salt);
-        if(!hashedPassword.get().equals(key)) {return false;}
+        if (!hashedPassword.get().equals(key)) {
+            return false;
+        }
         return hashedPassword.get().equals(key);
     }
 }

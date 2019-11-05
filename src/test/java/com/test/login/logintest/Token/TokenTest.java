@@ -6,27 +6,35 @@ import org.junit.jupiter.api.Test;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
 
 class TokenTest {
-    private Token token;
+    private TokenService tokenService;
+    private TokenService mockedToken;
 
     @BeforeEach
-    void setUpToken(){
-        token = new Token();
+    void setUpToken() {
+        tokenService = new TokenService();
+        mockedToken = mock(TokenService.class);
     }
 
     @Test
     void if_token_is_not_unique_fail() {
-        String uuidToken1 = token.createValidToken();
-        String uuidToken2 = token.createValidToken();
+        Optional<Token> uuidToken1 = tokenService.createValidToken();
+        Optional<Token> uuidToken2 = tokenService.createValidToken();
         assertNotEquals(uuidToken1, uuidToken2);
     }
 
     @Test
-    void checks_that_token_is_created_and_has_string_value() {
-        String uuid = token.createValidToken();
-        Optional<String> uuidString = Optional.of(uuid);
-        assertSame(uuid, uuidString.get());
+    void tests_that_token_is_created() {
+        Optional<Token> uuid = tokenService.createValidToken();
+        assertTrue(uuid.isPresent());
+    }
+
+    @Test
+    void token_is_added_to_tokenList() {
+        Optional<Token> token = tokenService.createValidToken();
+        assertTrue(tokenService.tokenList.contains(token));
     }
 }

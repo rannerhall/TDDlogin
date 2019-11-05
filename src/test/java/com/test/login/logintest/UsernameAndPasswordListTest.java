@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class UsernameAndPasswordListTest {
     private Object[] expectedUsers = new Object[3];
+    UsernameAndPasswordList usernameAndPasswordList = new UsernameAndPasswordList();
 
     @BeforeEach
     void setUpUserList() {
@@ -20,7 +21,7 @@ class UsernameAndPasswordListTest {
 
     @Test
     void user_list_is_correctly_populated() {
-        Object[] testOutput = UsernameAndPasswordList.populateUserList().toArray();
+        Object[] testOutput = usernameAndPasswordList.populateUserList().toArray();
         assertArrayEquals(expectedUsers, testOutput);
     }
 
@@ -29,7 +30,7 @@ class UsernameAndPasswordListTest {
         expectedUsers[0] = new User("felnamn", "fellosen");
         expectedUsers[1] = new User("felnamnigen", "fellosenord");
         expectedUsers[2] = new User("felnamnaterigen", "fellosenigen");
-        Object[] testOutput = UsernameAndPasswordList.populateUserList().toArray();
+        Object[] testOutput = usernameAndPasswordList.populateUserList().toArray();
         assertNotEquals(expectedUsers, testOutput);
     }
 
@@ -38,7 +39,7 @@ class UsernameAndPasswordListTest {
         expectedUsers[0] = null;
         expectedUsers[1] = null;
         expectedUsers[2] = null;
-        Object[] testOutput = UsernameAndPasswordList.populateUserList().toArray();
+        Object[] testOutput = usernameAndPasswordList.populateUserList().toArray();
         assertNotEquals(expectedUsers, testOutput);
     }
 }

@@ -1,16 +1,22 @@
 package com.test.login.logintest.Login;
 
-import com.test.login.logintest.User.User;
+import com.test.login.logintest.Token.Token;
+import com.test.login.logintest.Token.TokenService;
+import com.test.login.logintest.User.UsernameAndPasswordList;
+
+import java.util.Optional;
 
 public class Login {
-    private User user;
+    private UsernameAndPasswordList usersList;
+    private TokenService tokenService = new TokenService();
 
-    public Login(User user) {
-        this.user = user;
+    public Login() {
     }
 
-    public boolean validateLogin(String username, String password) {
-        return username.equals(user.getUsername()) && password.equals(user.getPassword());
+    public Optional<Token> validateLogin(String username, String password) {
+        if (true) {
+            return tokenService.createValidToken();
+        } else return Optional.empty();
     }
 
 
