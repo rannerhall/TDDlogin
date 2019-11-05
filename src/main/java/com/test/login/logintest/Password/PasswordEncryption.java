@@ -10,11 +10,41 @@ import java.util.Optional;
 
 public class PasswordEncryption {
 
-    private static final int ITERATIONS = 65536;
-    private static final int KEY_LENGTH = 512;
-    private static final String ALGORITHM = "PBKDF2WithHmacSHA512";
+    private int ITERATIONS;
+    private int KEY_LENGTH;
+    private String ALGORITHM;
 
-    public static Optional<String> hashPassword(String password, String salt) {
+    public int getITERATIONS() {
+        return ITERATIONS;
+    }
+
+    public void setITERATIONS(int ITERATIONS) {
+        this.ITERATIONS = ITERATIONS;
+    }
+
+    public int getKEY_LENGTH() {
+        return KEY_LENGTH;
+    }
+
+    public void setKEY_LENGTH(int KEY_LENGTH) {
+        this.KEY_LENGTH = KEY_LENGTH;
+    }
+
+    public String getALGORITHM() {
+        return ALGORITHM;
+    }
+
+    public void setALGORITHM(String ALGORITHM) {
+        this.ALGORITHM = ALGORITHM;
+    }
+
+    public PasswordEncryption() {
+        this.ALGORITHM = "PBKDF2WithHmacSHA512";
+        this.ITERATIONS = 65536;
+        this.KEY_LENGTH = 512;
+    }
+
+    public Optional<String> hashPassword(String password, String salt) throws NoSuchAlgorithmException, InvalidKeySpecException{
         if(password == null || salt == null) {
             System.err.println("Parameters password or salt in hashPassword can´t be null");
             return Optional.empty();
@@ -31,15 +61,14 @@ public class PasswordEncryption {
             byte[] securePassword = fac.generateSecret(spec).getEncoded();
             return Optional.of(Base64.getEncoder().encodeToString(securePassword));
         } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
-            System.err.println("Exception encountered in hashPassword()");
-            return Optional.empty();
-
+            System.err.println("Exception encountered in hashPassword()" );
+            throw ex;
         } finally {
             spec.clearPassword();
         }
     }
 
-     public static boolean verifyPassword(String password, String salt, String key) {
+     public boolean verifyPassword(String password, String salt, String key) throws InvalidKeySpecException, NoSuchAlgorithmException {
         Optional<String> hashedPassword = hashPassword(password, salt);
         if(!hashedPassword.get().equals(key)) {return false;}
         return hashedPassword.get().equals(key);
