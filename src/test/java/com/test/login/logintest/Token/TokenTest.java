@@ -21,20 +21,15 @@ class TokenTest {
 
     @Test
     void if_token_is_not_unique_fail() {
-        Optional<Token> uuidToken1 = tokenService.createValidToken();
-        Optional<Token> uuidToken2 = tokenService.createValidToken();
+        Token uuidToken1 = tokenService.createValidToken();
+        Token uuidToken2 = tokenService.createValidToken();
         assertNotEquals(uuidToken1, uuidToken2);
     }
 
     @Test
     void tests_that_token_is_created() {
-        Optional<Token> uuid = tokenService.createValidToken();
-        assertTrue(uuid.isPresent());
+        Token uuid = tokenService.createValidToken();
+        assertTrue(uuid.tokenIsPresent());
     }
 
-    @Test
-    void token_is_added_to_tokenList() {
-        Optional<Token> token = tokenService.createValidToken();
-        assertTrue(tokenService.tokenList.contains(token));
-    }
 }

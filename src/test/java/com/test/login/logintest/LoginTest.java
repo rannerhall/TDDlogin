@@ -1,54 +1,63 @@
 package com.test.login.logintest;
 
 import com.test.login.logintest.Login.Login;
-import com.test.login.logintest.Token.TokenService;
 import com.test.login.logintest.Token.Token;
-import com.test.login.logintest.User.User;
+import com.test.login.logintest.Token.TokenService;
+import com.test.login.logintest.User.UsernameAndPasswordList;
+import org.apache.commons.logging.Log;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class LoginTest {
     private Login login;
     private String username;
     private String password;
     private TokenService tokenService;
+    private UsernameAndPasswordList userList = new UsernameAndPasswordList();
+
+
 
     @BeforeEach
     void setUpUserAndLogin() {
-        username = "Pelle";
-        password = "123123";
-        User user = new User(username, password);
+        login = mock(Login.class);
+        username = "Kalle";
+        password = "password";
         login = new Login();
         tokenService = new TokenService();
+        userList.populateUserList();
     }
 
     @Test
     void validate_login_success() {
-        Optional<Token> loginResult = login.validateLogin("Pelle", "123123");
-        assertTrue(loginResult.isPresent());
+        Token loginResult = login.validateLogin(username, password);
+        assertTrue(loginResult.tokenIsPresent());
     }
 
     @Test
     void validate_login_fail() {
-        Optional<Token> loginResult = login.validateLogin("felnamn", "fellosen");
-        assertFalse(loginResult.isPresent());
+
+        assertThrows(RuntimeException.class, () -> {
+            login.validateLogin("felnamn", "fellosen");
+        });
     }
 
     @Test
     void validate_login_incorrect_password_fail() {
-        Optional<Token> loginResult = login.validateLogin("Pelle", "2");
-        assertFalse(loginResult.isPresent());
-    }
+        assertThrows(RuntimeException.class, () -> {
+            login.validateLogin(username, "2");
+        });    }
 
     @Test
     void validate_login_incorrect_username_fail() {
-        Optional<Token> loginResult = login.validateLogin("Peeeeeeeeeeeeeteeeeeeeeeeer", "123311231");
-        assertFalse(loginResult.isPresent());
+        assertThrows(RuntimeException.class, () -> {
+            login.validateLogin("Kallle", "123311231");
+        });
     }
 
 }

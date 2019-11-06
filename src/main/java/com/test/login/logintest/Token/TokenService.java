@@ -6,20 +6,38 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class TokenService {
-    List<Optional<Token>> tokenList = new ArrayList<>();
-
-  public  Optional<Token> createValidToken() {
-        String uuid = UUID.randomUUID().toString();
-        Token token = new Token(uuid);
-        if(!uuid.isBlank()){
-            addToTokenList(Optional.of(token));
-            return Optional.of(token);
-        }
-        return Optional.empty();
+    public List<Token> getTokenList() {
+        return tokenList;
     }
 
+    public void setTokenList(List<Token> tokenList) {
+        this.tokenList = tokenList;
+    }
 
-    private void addToTokenList(Optional<Token> token) {
+    List<Token> tokenList = new ArrayList<>();
+
+    public Token createValidToken() {
+        String uuid = UUID.randomUUID().toString();
+        Token token = new Token(uuid);
+        if (!uuid.isBlank()) {
+            addToTokenList(token);
+            return token;
+        }
+        throw new RuntimeException();
+    }
+
+    private void addToTokenList(Token token) {
         tokenList.add(token);
+    }
+
+    public boolean authenticateToken(Token token) {
+        boolean result = false;
+        for( Token t : tokenList) {
+            if (token.getToken().equals(t.getToken())) {
+                result = true;
+                break;
+            }
+        }
+        return result;
     }
 }
