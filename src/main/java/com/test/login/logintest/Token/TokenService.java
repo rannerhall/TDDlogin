@@ -2,7 +2,6 @@ package com.test.login.logintest.Token;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public class TokenService {
@@ -20,13 +19,13 @@ public class TokenService {
         String uuid = UUID.randomUUID().toString();
         Token token = new Token(uuid);
         if (!uuid.isBlank()) {
-            addToTokenList(token);
+            addTokenToList(token);
             return token;
         }
         throw new RuntimeException();
     }
 
-    private void addToTokenList(Token token) {
+    private void addTokenToList(Token token) {
         tokenList.add(token);
     }
 

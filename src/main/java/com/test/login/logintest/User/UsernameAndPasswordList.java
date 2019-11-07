@@ -1,7 +1,6 @@
 package com.test.login.logintest.User;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UsernameAndPasswordList {
@@ -12,12 +11,6 @@ public class UsernameAndPasswordList {
     }
 
     public UsernameAndPasswordList() { }
-
-    public void populateUserList() {
-        users.add(new User("Anna", "losen"));
-        users.add(new User("Berit", "123456"));
-        users.add(new User("Kalle", "password"));
-    }
 
     public boolean checkIfUserAndPasswordMatchUserInList(String username, String password) {
         boolean result = false;

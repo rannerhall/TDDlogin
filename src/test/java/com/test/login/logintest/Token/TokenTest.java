@@ -3,8 +3,6 @@ package com.test.login.logintest.Token;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
@@ -31,5 +29,4 @@ class TokenTest {
         Token uuid = tokenService.createValidToken();
         assertTrue(uuid.tokenIsPresent());
     }
-
 }
