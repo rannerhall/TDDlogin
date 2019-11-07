@@ -19,13 +19,13 @@ public class TokenService {
         String uuid = UUID.randomUUID().toString();
         Token token = new Token(uuid);
         if (!uuid.isBlank()) {
-            addToTokenList(token);
+            addTokenToList(token);
             return token;
         }
         throw new RuntimeException();
     }
 
-    private void addToTokenList(Token token) {
+    private void addTokenToList(Token token) {
         tokenList.add(token);
     }
 
