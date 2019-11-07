@@ -2,7 +2,6 @@ package com.test.login.logintest.Token;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public class TokenService {
@@ -32,7 +31,7 @@ public class TokenService {
 
     public boolean authenticateToken(Token token) {
         boolean result = false;
-        for( Token t : tokenList) {
+        for (Token t : tokenList) {
             if (token.getToken().equals(t.getToken())) {
                 result = true;
                 break;

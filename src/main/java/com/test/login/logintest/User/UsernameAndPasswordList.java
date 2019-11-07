@@ -1,7 +1,6 @@
 package com.test.login.logintest.User;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UsernameAndPasswordList {

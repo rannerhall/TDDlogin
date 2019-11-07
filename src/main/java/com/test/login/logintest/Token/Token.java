@@ -4,7 +4,7 @@ public class Token {
 
     private String token;
 
-    public String getToken() {
+    String getToken() {
         return token;
     }
 
@@ -13,9 +13,7 @@ public class Token {
     }
 
     public boolean tokenIsPresent() {
-        if(token != null && token.getClass().equals(String.class) ) {
-            return true;
-        } else return false;
+        return token != null && token.getClass().equals(String.class);
     }
 
 }

@@ -2,10 +2,7 @@ package com.test.login.logintest.Login;
 
 import com.test.login.logintest.Token.Token;
 import com.test.login.logintest.Token.TokenService;
-import com.test.login.logintest.User.User;
 import com.test.login.logintest.User.UsernameAndPasswordList;
-
-import java.util.Optional;
 
 public class Login {
     private UsernameAndPasswordList userList = new UsernameAndPasswordList();
@@ -19,5 +16,4 @@ public class Login {
             return tokenService.createValidToken();
         } else throw new RuntimeException();
     }
-
 }

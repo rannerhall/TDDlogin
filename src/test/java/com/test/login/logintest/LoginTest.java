@@ -4,15 +4,12 @@ import com.test.login.logintest.Login.Login;
 import com.test.login.logintest.Token.Token;
 import com.test.login.logintest.Token.TokenService;
 import com.test.login.logintest.User.UsernameAndPasswordList;
-import org.apache.commons.logging.Log;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 class LoginTest {
     private Login login;
@@ -59,5 +56,4 @@ class LoginTest {
             login.validateLogin("Kallle", "123311231");
         });
     }
-
 }
