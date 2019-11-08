@@ -10,6 +10,10 @@ public class UsernameAndPasswordList {
         return users;
     }
 
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
     public UsernameAndPasswordList() { }
 
     public boolean checkIfUserAndPasswordMatchUserInList(String username, String password) {

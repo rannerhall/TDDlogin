@@ -5,10 +5,11 @@ import com.test.login.logintest.Token.TokenService;
 import com.test.login.logintest.User.UsernameAndPasswordList;
 
 public class Login {
-    private UsernameAndPasswordList userList = new UsernameAndPasswordList();
+    private UsernameAndPasswordList userList;
     private TokenService tokenService = new TokenService();
 
-    public Login() {
+    public Login(UsernameAndPasswordList userList) {
+        this.userList = userList;
     }
 
     public Token validateLogin(String username, String password) {
