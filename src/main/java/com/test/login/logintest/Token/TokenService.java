@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+
 public class TokenService {
     public List<Token> getTokenList() {
         return tokenList;
@@ -14,6 +15,30 @@ public class TokenService {
     }
 
     List<Token> tokenList = new ArrayList<>();
+
+   /* private static SecretKey secretKey =
+
+    public String tokenBuilder(User user) {
+        String token = Jwts.builder()
+                .setSubject(user.getUsername())
+                .claim("premission", user.getPremission)
+                .setExpiration(new Date(System.currentTimeMillis()))
+                .signWith(secretKey)
+                .compact();
+
+        return token;
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
+            return true;
+        } catch (JwtException e) {
+            return false;
+        }
+    }
+
+    */
 
     public Token createValidToken() {
         String uuid = UUID.randomUUID().toString();

@@ -17,7 +17,6 @@ public class ValidateUsernameAndPassword {
         this.user = user;
     }
 
-
     public boolean validateUsername() {
         if (StringUtils.isNotBlank(user.getUsername())) {
             return user.getUsername().length() >= MIN_LENGTH_USERNAME && user.getUsername().length() <= MAX_LENGTH_USERNAME;
