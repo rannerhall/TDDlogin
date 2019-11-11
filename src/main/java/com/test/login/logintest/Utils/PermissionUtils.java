@@ -14,19 +14,19 @@ public class PermissionUtils {
         this.scope = new ArrayList<>();
     }
 
-    String getResource() {
+    public String getResource() {
         return resource;
     }
 
-    void setResource(String resource) {
+    public void setResource(String resource) {
         this.resource = resource;
     }
 
-    List<String> getScope() {
+    public List<String> getScope() {
         return scope;
     }
 
-    void setScope(String scope) {
+    public void setScope(String scope) {
         this.scope.add(scope);
     }
 }
