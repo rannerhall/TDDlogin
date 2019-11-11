@@ -1,16 +1,31 @@
 package com.test.login.logintest.User;
 
+import com.test.login.logintest.Utils.PermissionUtils;
+
 import javax.persistence.Entity;
+import java.security.Permission;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 public class User {
     private String username;
     private String password;
+    private PermissionUtils permissions;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+        this.permissions = new PermissionUtils();
+    }
+
+    public PermissionUtils getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(PermissionUtils permissions) {
+        this.permissions = permissions;
     }
 
     public String getUsername() {

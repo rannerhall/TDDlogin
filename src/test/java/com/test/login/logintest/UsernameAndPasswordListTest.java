@@ -8,19 +8,15 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
 
 class UsernameAndPasswordListTest {
     private Object[] expectedUsers = new Object[3];
-    private UsernameAndPasswordList userList;
+    private UsernameAndPasswordList userList = new UsernameAndPasswordList();
     private List<User> users;
 
     @BeforeEach
     void setUpUserList() {
-        userList = mock(UsernameAndPasswordList.class);
         expectedUsers[0] = new User("Anna", "losen");
         expectedUsers[1] = new User("Berit", "123456");
         expectedUsers[2] = new User("Kalle", "password");
@@ -33,8 +29,7 @@ class UsernameAndPasswordListTest {
 
     @Test
     void user_list_is_correctly_populated() {
-        when(userList.getUsers()).thenReturn(users);
-        assertArrayEquals(expectedUsers, userList.getUsers().toArray());
+        assertArrayEquals(expectedUsers, users.toArray());
     }
 
     @Test
@@ -42,15 +37,20 @@ class UsernameAndPasswordListTest {
         expectedUsers[0] = new User("felnamn", "fellosen");
         expectedUsers[1] = new User("felnamnigen", "fellosenord");
         expectedUsers[2] = new User("felnamnaterigen", "fellosenigen");
-        assertNotEquals(expectedUsers, userList.getUsers().toArray());
+        assertNotEquals(expectedUsers, users.toArray());
     }
 
     @Test
     void user_list_is_null_fail() {
-        when(userList.getUsers()).thenReturn(users);
         expectedUsers[0] = null;
         expectedUsers[1] = null;
         expectedUsers[2] = null;
-        assertNotEquals(expectedUsers, userList.getUsers().toArray());
+        assertNotEquals(expectedUsers, users.toArray());
+    }
+
+    @Test
+    void find_user_in_user_list_by_username_and_password() {
+        userList.setUsers(users);
+        assertTrue(userList.checkIfUserAndPasswordMatchUserInList("Berit", "123456"));
     }
 }
