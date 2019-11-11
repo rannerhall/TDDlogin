@@ -5,12 +5,9 @@ import com.test.login.logintest.Token.TokenService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RequestPermissionServiceTest {
-
     private RequestPermissionService requestPermissionService = new RequestPermissionService();
     private Token token;
     private TokenService tokenService = new TokenService();
@@ -28,5 +25,4 @@ class RequestPermissionServiceTest {
     void name() {
         assertTrue(requestPermissionService.returnPermissionOfUser("ACCOUNT", token).contains("READ"));
     }
-
 }

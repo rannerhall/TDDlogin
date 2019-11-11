@@ -4,10 +4,10 @@ import com.test.login.logintest.Token.Token;
 
 import java.util.List;
 
-public class RequestPermissionService {
+class RequestPermissionService {
 
-    public List<String> returnPermissionOfUser(String resource, Token token) {
-        if(token.getPermissions().getResource().equals(resource)) {
+    List<String> returnPermissionOfUser(String resource, Token token) {
+        if (token.getPermissions().getResource().equals(resource)) {
             return token.getPermissions().getScope();
         }
         return null;

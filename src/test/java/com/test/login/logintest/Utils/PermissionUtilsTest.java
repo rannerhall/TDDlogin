@@ -8,15 +8,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PermissionUtilsTest {
-
     private PermissionUtils permissionUtils = new PermissionUtils();
     private User user;
     private Token token;
     private TokenService tokenService = new TokenService();
-    @BeforeEach void setUp() {
+
+    @BeforeEach
+    void setUp() {
         user = new User("Berit", "123456");
         token = tokenService.createValidToken();
         permissionUtils.setScope("READ");
@@ -42,6 +43,4 @@ class PermissionUtilsTest {
         token.setPermissions(permissionUtils);
         assertThat(token.getPermissions(), is(permissionUtils));
     }
-
-
 }

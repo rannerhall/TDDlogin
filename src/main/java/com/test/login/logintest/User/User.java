@@ -3,9 +3,6 @@ package com.test.login.logintest.User;
 import com.test.login.logintest.Utils.PermissionUtils;
 
 import javax.persistence.Entity;
-import java.security.Permission;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Objects;
 
 @Entity

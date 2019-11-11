@@ -55,7 +55,8 @@ class LoginTest {
     void validate_login_incorrect_password_fail() {
         assertThrows(RuntimeException.class, () -> {
             login.validateLogin(username, "2");
-        });    }
+        });
+    }
 
     @Test
     void validate_login_incorrect_username_fail() {
@@ -63,5 +64,4 @@ class LoginTest {
             login.validateLogin("Kallle", "123311231");
         });
     }
-
 }

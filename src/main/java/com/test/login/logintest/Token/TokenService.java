@@ -6,8 +6,7 @@ import java.util.UUID;
 
 
 public class TokenService {
-
-    List<Token> tokenList = new ArrayList<>();
+    private List<Token> tokenList = new ArrayList<>();
 
     public Token createValidToken() {
         String uuid = UUID.randomUUID().toString();
@@ -23,7 +22,7 @@ public class TokenService {
         tokenList.add(token);
     }
 
-    public boolean authenticateToken(Token token) {
+    boolean authenticateToken(Token token) {
         boolean result = false;
         for (Token t : tokenList) {
             if (token.getToken().equals(t.getToken())) {

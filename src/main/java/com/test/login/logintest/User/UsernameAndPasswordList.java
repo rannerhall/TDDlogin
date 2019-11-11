@@ -13,16 +13,18 @@ public class UsernameAndPasswordList {
         this.users = users;
     }
 
-    public UsernameAndPasswordList() { }
+    public UsernameAndPasswordList() {
+    }
 
     public boolean checkIfUserAndPasswordMatchUserInList(String username, String password) {
         boolean result = false;
-        for(User user : users) {
+        for (User user : users) {
             if (user.getUsername().equals(username) &&
                     user.getPassword().equals(password)) {
                 result = true;
                 break;
             }
-        } return result;
+        }
+        return result;
     }
 }

@@ -3,7 +3,6 @@ package com.test.login.logintest.Token;
 import com.test.login.logintest.Utils.PermissionUtils;
 
 public class Token {
-
     private String token;
     private PermissionUtils permissions;
 

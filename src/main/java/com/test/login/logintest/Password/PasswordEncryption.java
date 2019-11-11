@@ -9,7 +9,6 @@ import java.util.Base64;
 import java.util.Optional;
 
 public class PasswordEncryption {
-
     private int ITERATIONS;
     private int KEY_LENGTH;
     private String ALGORITHM;

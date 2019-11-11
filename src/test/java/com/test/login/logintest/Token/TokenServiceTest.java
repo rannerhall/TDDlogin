@@ -18,5 +18,4 @@ class TokenServiceTest {
     void checks_that_the_token_is_present_in_the_list() {
         assertTrue(tokenService.authenticateToken(token));
     }
-
 }

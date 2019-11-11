@@ -8,7 +8,6 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PasswordUtilsTest {
-
     private int length;
 
     @BeforeEach
