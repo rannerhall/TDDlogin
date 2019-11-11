@@ -22,7 +22,7 @@ class LoginTest {
     private TokenService tokenService;
     private List<User> users;
     private Login login;
-    private UsernameAndPasswordList usernameAndPasswordList;
+    private UsernameAndPasswordList usernameAndPasswordList = new UsernameAndPasswordList();
 
     @BeforeEach
     void setUpUserAndLogin() {
@@ -34,12 +34,14 @@ class LoginTest {
                 new User("Berit", "123456"),
                 new User("Kalle", "password")
         );
-        usernameAndPasswordList = mock(UsernameAndPasswordList.class);
+        usernameAndPasswordList.setUsers(users);
         login = new Login(usernameAndPasswordList);
     }
 
     @Test
     void validate_login_success() {
+        usernameAndPasswordList = mock(UsernameAndPasswordList.class);
+        login = new Login(usernameAndPasswordList);
         when(usernameAndPasswordList.checkIfUserAndPasswordMatchUserInList(Mockito.anyString(), Mockito.anyString())).thenReturn(true);
         assertTrue(login.validateLogin(username, password).tokenIsPresent());
     }

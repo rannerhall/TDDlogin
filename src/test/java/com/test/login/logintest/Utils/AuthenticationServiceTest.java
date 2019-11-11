@@ -5,10 +5,11 @@ import com.test.login.logintest.Token.TokenService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class RequestPermissionServiceTest {
-    private RequestPermissionService requestPermissionService = new RequestPermissionService();
+class AuthenticationServiceTest {
+    private AuthenticationService authenticationService = new AuthenticationService();
     private Token token;
     private TokenService tokenService = new TokenService();
     private PermissionUtils permissionUtils = new PermissionUtils();
@@ -22,7 +23,14 @@ class RequestPermissionServiceTest {
     }
 
     @Test
-    void name() {
-        assertTrue(requestPermissionService.returnPermissionOfUser("ACCOUNT", token).contains("READ"));
+    void token_has_resource_and_scope_success() {
+        assertTrue(authenticationService.returnPermissionOfUser("ACCOUNT", token).contains("READ"));
+    }
+
+    @Test
+    void token_has_not_resource_and_scope_throws_new_runtime_exception() {
+        assertThrows(RuntimeException.class, () -> {
+            authenticationService.returnPermissionOfUser("", token).contains("");
+        });
     }
 }
