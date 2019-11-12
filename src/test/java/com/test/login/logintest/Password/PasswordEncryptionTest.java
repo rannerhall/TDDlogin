@@ -1,4 +1,4 @@
-package com.test.login.logintest;
+package com.test.login.logintest.Password;
 
 import com.test.login.logintest.Password.PasswordEncryption;
 import com.test.login.logintest.Utils.PasswordUtils;

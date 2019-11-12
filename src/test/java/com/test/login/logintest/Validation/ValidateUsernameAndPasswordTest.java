@@ -1,4 +1,4 @@
-package com.test.login.logintest;
+package com.test.login.logintest.Validation;
 
 import com.test.login.logintest.User.User;
 import com.test.login.logintest.Validation.ValidateUsernameAndPassword;
