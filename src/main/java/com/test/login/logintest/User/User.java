@@ -2,10 +2,8 @@ package com.test.login.logintest.User;
 
 import com.test.login.logintest.Utils.PermissionUtils;
 
-import javax.persistence.Entity;
 import java.util.Objects;
 
-@Entity
 public class User {
     private String username;
     private String password;
