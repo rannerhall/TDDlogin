@@ -1,6 +1,5 @@
 package com.test.login.logintest.Password;
 
-import com.test.login.logintest.Password.PasswordEncryption;
 import com.test.login.logintest.Utils.PasswordUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

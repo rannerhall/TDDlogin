@@ -3,11 +3,11 @@ package com.test.login.logintest.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PermissionUtils {
+public class Permission {
     private String resource;
     private List<String> scope;
 
-    public PermissionUtils() {
+    public Permission() {
         this.resource = "";
         this.scope = new ArrayList<>();
     }

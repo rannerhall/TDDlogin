@@ -14,7 +14,7 @@ public class Login {
 
     public Token validateLogin(String username, String password) {
         if (userList.checkIfUserAndPasswordMatchUserInList(username, password)) {
-            return tokenService.createValidToken();
+            return tokenService.createValidToken(username);
         } else throw new RuntimeException();
     }
 }

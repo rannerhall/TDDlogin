@@ -1,7 +1,6 @@
 package com.test.login.logintest.Validation;
 
 import com.test.login.logintest.User.User;
-import com.test.login.logintest.Validation.ValidateUsernameAndPassword;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

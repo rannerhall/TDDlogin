@@ -13,26 +13,6 @@ public class PasswordEncryption {
     private int KEY_LENGTH;
     private String ALGORITHM;
 
-    public int getITERATIONS() {
-        return ITERATIONS;
-    }
-
-    public void setITERATIONS(int ITERATIONS) {
-        this.ITERATIONS = ITERATIONS;
-    }
-
-    public int getKEY_LENGTH() {
-        return KEY_LENGTH;
-    }
-
-    public void setKEY_LENGTH(int KEY_LENGTH) {
-        this.KEY_LENGTH = KEY_LENGTH;
-    }
-
-    public String getALGORITHM() {
-        return ALGORITHM;
-    }
-
     public void setALGORITHM(String ALGORITHM) {
         this.ALGORITHM = ALGORITHM;
     }

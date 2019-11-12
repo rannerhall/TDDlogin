@@ -1,20 +1,16 @@
 package com.test.login.logintest.Login;
 
-import com.test.login.logintest.Login.Login;
 import com.test.login.logintest.Token.TokenService;
 import com.test.login.logintest.User.User;
 import com.test.login.logintest.User.UsernameAndPasswordList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 class LoginTest {
     private String username;
@@ -40,9 +36,6 @@ class LoginTest {
 
     @Test
     void validate_login_success() {
-        usernameAndPasswordList = mock(UsernameAndPasswordList.class);
-        login = new Login(usernameAndPasswordList);
-        when(usernameAndPasswordList.checkIfUserAndPasswordMatchUserInList(Mockito.anyString(), Mockito.anyString())).thenReturn(true);
         assertTrue(login.validateLogin(username, password).tokenIsPresent());
     }
 

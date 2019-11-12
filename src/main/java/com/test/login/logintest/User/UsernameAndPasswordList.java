@@ -27,4 +27,13 @@ public class UsernameAndPasswordList {
         }
         return result;
     }
+
+    public User getUserFromList(String username) {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                return user;
+            }
+        }
+        throw new RuntimeException();
+    }
 }

@@ -13,7 +13,7 @@ public class ValidateUsernameAndPassword {
     private final int MAX_LENGHT_PASSWORD = 20;
     private User user;
 
-    public ValidateUsernameAndPassword(User user) {
+    ValidateUsernameAndPassword(User user) {
         this.user = user;
     }
 
