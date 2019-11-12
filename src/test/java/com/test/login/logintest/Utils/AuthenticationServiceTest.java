@@ -5,8 +5,7 @@ import com.test.login.logintest.Token.TokenService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class AuthenticationServiceTest {
     private AuthenticationService authenticationService = new AuthenticationService();
@@ -25,6 +24,11 @@ class AuthenticationServiceTest {
     @Test
     void token_has_resource_and_scope_success() {
         assertTrue(authenticationService.returnPermissionOfUser("ACCOUNT", token).contains("READ"));
+    }
+
+    @Test
+    void token_har_resource_but_wrong_scope_fail() {
+        assertFalse(authenticationService.returnPermissionOfUser("ACCOUNT", token).contains("WRITE"));
     }
 
     @Test
