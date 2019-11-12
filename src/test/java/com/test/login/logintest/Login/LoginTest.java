@@ -1,4 +1,4 @@
-package com.test.login.logintest;
+package com.test.login.logintest.Login;
 
 import com.test.login.logintest.Login.Login;
 import com.test.login.logintest.Token.TokenService;

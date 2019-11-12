@@ -1,7 +1,5 @@
-package com.test.login.logintest;
+package com.test.login.logintest.User;
 
-import com.test.login.logintest.User.User;
-import com.test.login.logintest.User.UsernameAndPasswordList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
