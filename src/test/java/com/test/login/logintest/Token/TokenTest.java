@@ -9,14 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TokenTest {
-    private TokenService tokenService;
     private User user;
-    private Permission permissions;
+    private TokenService tokenService = new TokenService();
+    private Permission permissions = new Permission();
 
     @BeforeEach
     void setUpToken() {
-        tokenService = new TokenService();
-        permissions = new Permission();
         permissions.setResource("ACCOUNT");
         permissions.setScope("READ");
         user = new User("Anna", "losen");

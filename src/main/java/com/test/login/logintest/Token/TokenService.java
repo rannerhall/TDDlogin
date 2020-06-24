@@ -26,13 +26,13 @@ public class TokenService {
         throw new RuntimeException();
     }
 
-    private void addTokenToList(Token token, String  username) {
+    private void addTokenToList(Token token, String username) {
         this.tokenList.put(token, username);
     }
 
     boolean authenticateToken(Token token) {
         boolean result = false;
-        if(tokenList.get(token) != null) {
+        if (!tokenList.get(token).isBlank()) {
             result = true;
         }
         return result;

@@ -19,8 +19,8 @@ public class UsernameAndPasswordList {
     public boolean checkIfUserAndPasswordMatchUserInList(String username, String password) {
         boolean result = false;
         for (User user : users) {
-            if (user.getUsername().equals(username) &&
-                    user.getPassword().equals(password)) {
+            if (username.equals(user.getUsername()) &&
+                    password.equals(user.getPassword())) {
                 result = true;
                 break;
             }
@@ -30,7 +30,7 @@ public class UsernameAndPasswordList {
 
     public User getUserFromList(String username) {
         for (User user : users) {
-            if (user.getUsername().equals(username)) {
+            if (username.equals(user.getUsername())) {
                 return user;
             }
         }

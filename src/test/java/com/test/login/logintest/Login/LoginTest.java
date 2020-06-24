@@ -15,8 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class LoginTest {
     private String username;
     private String password;
-    private TokenService tokenService;
-    private List<User> users;
     private Login login;
     private UsernameAndPasswordList usernameAndPasswordList = new UsernameAndPasswordList();
 
@@ -24,8 +22,8 @@ class LoginTest {
     void setUpUserAndLogin() {
         username = "Kalle";
         password = "password";
-        tokenService = new TokenService();
-        users = Arrays.asList(
+        TokenService tokenService = new TokenService();
+        List<User> users = Arrays.asList(
                 new User("Anna", "losen"),
                 new User("Berit", "123456"),
                 new User("Kalle", "password")

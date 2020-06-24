@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 public class ValidateUsernameAndPassword {
     private final int MIN_LENGTH_USERNAME = 4;
     private final int MAX_LENGTH_USERNAME = 12;
-    private final int MIN_LENGHT_PASSWORD = 6;
     private final int MAX_LENGHT_PASSWORD = 20;
     private User user;
 

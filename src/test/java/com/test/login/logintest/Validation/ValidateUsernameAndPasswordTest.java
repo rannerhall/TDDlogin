@@ -75,7 +75,7 @@ class ValidateUsernameAndPasswordTest {
 
     @Test
     void password_has_incorrect_regex_is_invalid() {
-        user.setPassword("Anton e en Tönt");
+        user.setPassword("fel losen ord");
         assertFalse(validateUsernameAndPassword.validatePasswordRegex());
     }
 }

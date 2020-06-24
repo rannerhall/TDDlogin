@@ -24,10 +24,11 @@ public class PasswordEncryption {
     }
 
     public Optional<String> hashPassword(String password, String salt) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        if (password == null || salt == null) {
+        if (password.isBlank() || salt.isBlank()) {
             System.err.println("Parameters password or salt in hashPassword can´t be null");
             return Optional.empty();
         }
+
         char[] chars = password.toCharArray();
         byte[] bytes = salt.getBytes();
 
@@ -52,6 +53,7 @@ public class PasswordEncryption {
         if (!hashedPassword.get().equals(key)) {
             return false;
         }
-        return hashedPassword.get().equals(key);
+        hashedPassword.get();
+        return true;
     }
 }

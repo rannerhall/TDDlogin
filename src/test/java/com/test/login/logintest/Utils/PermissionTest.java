@@ -1,7 +1,5 @@
 package com.test.login.logintest.Utils;
 
-import com.test.login.logintest.Token.Token;
-import com.test.login.logintest.Token.TokenService;
 import com.test.login.logintest.User.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,13 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class PermissionTest {
     private Permission permission = new Permission();
     private User user;
-    private Token token;
-    private TokenService tokenService = new TokenService();
 
     @BeforeEach
     void setUp() {
         user = new User("Berit", "123456");
-        token = tokenService.createValidToken(user.getUsername());
         permission.setScope("READ");
         permission.setScope("WRITE");
         permission.setResource("ACCOUNT");

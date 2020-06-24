@@ -21,7 +21,7 @@ class AuthenticationServiceTest {
     private AuthenticationService authenticationService = new AuthenticationService(usernameAndPasswordList, tokenService);
     private Permission permission = new Permission();
     private User user = new User("Anna", "losen");
-    private List<User> userlist = new ArrayList<>();
+    private List<User> userList = new ArrayList<>();
     private HashMap<Token, String> tokenList = new HashMap<>();
 
     @BeforeEach
@@ -30,8 +30,8 @@ class AuthenticationServiceTest {
         permission.setScope("READ");
         user.setPermissions(permission);
         token = tokenService.createValidToken(user.getUsername());
-        userlist.add(user);
-        usernameAndPasswordList.setUsers(userlist);
+        userList.add(user);
+        usernameAndPasswordList.setUsers(userList);
         tokenList.put(token, user.getUsername());
         tokenService.setTokenList(tokenList);
     }
