@@ -4,10 +4,13 @@ import com.test.login.logintest.Token.Token;
 import com.test.login.logintest.Token.TokenService;
 import com.test.login.logintest.User.UsernameAndPasswordList;
 
-public class Login {
-    private UsernameAndPasswordList userList;
-    private TokenService tokenService = new TokenService();
+import javax.inject.Inject;
 
+public class Login {
+    private final UsernameAndPasswordList userList;
+    private final TokenService tokenService = new TokenService();
+
+    @Inject
     public Login(UsernameAndPasswordList userList) {
         this.userList = userList;
     }

@@ -1,9 +1,11 @@
 package com.test.login.logintest.Token;
 
+import org.springframework.stereotype.Service;
+
 import java.util.HashMap;
 import java.util.UUID;
 
-
+@Service
 public class TokenService {
 
     private HashMap<Token, String> tokenList = new HashMap<>();
@@ -31,10 +33,6 @@ public class TokenService {
     }
 
     boolean authenticateToken(Token token) {
-        boolean result = false;
-        if (!tokenList.get(token).isBlank()) {
-            result = true;
-        }
-        return result;
+        return !tokenList.get(token).isBlank();
     }
 }

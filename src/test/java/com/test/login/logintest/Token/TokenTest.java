@@ -10,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TokenTest {
     private User user;
-    private TokenService tokenService = new TokenService();
-    private Permission permissions = new Permission();
+    private final TokenService tokenService = new TokenService();
+    private final Permission permissions = new Permission();
 
     @BeforeEach
     void setUpToken() {

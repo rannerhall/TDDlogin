@@ -13,28 +13,24 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LoginTest {
-    private String username;
-    private String password;
-    private Login login;
-    private UsernameAndPasswordList usernameAndPasswordList = new UsernameAndPasswordList();
+    private static final String USERNAME = "Kalle";
+    private static final String PASSWORD = "password";
+    private final UsernameAndPasswordList usernameAndPasswordList = new UsernameAndPasswordList();
+    private final Login login = new Login(usernameAndPasswordList);
 
     @BeforeEach
-    void setUpUserAndLogin() {
-        username = "Kalle";
-        password = "password";
-        TokenService tokenService = new TokenService();
+    void setUpUserAndLogin() { ;
         List<User> users = Arrays.asList(
                 new User("Anna", "losen"),
                 new User("Berit", "123456"),
-                new User("Kalle", "password")
+                new User(USERNAME, PASSWORD)
         );
         usernameAndPasswordList.setUsers(users);
-        login = new Login(usernameAndPasswordList);
     }
 
     @Test
     void validate_login_success() {
-        assertTrue(login.validateLogin(username, password).tokenIsPresent());
+        assertTrue(login.validateLogin(USERNAME, PASSWORD).tokenIsPresent());
     }
 
     @Test
@@ -47,7 +43,7 @@ class LoginTest {
     @Test
     void validate_login_incorrect_password_fail() {
         assertThrows(RuntimeException.class, () -> {
-            login.validateLogin(username, "2");
+            login.validateLogin(USERNAME, "2");
         });
     }
 

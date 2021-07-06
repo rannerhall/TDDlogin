@@ -1,10 +1,14 @@
 package com.test.login.logintest.User;
 
 import com.test.login.logintest.Utils.Permission;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.Entity;
 import java.util.Objects;
 
-
+@Getter
+@Setter
 public class User {
     private String username;
     private String password;
@@ -14,30 +18,6 @@ public class User {
         this.username = username;
         this.password = password;
         this.permissions = new Permission();
-    }
-
-    public Permission getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(Permission permissions) {
-        this.permissions = permissions;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Override

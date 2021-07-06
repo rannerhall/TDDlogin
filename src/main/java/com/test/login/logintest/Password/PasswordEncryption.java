@@ -9,12 +9,12 @@ import java.util.Base64;
 import java.util.Optional;
 
 public class PasswordEncryption {
-    private int ITERATIONS;
-    private int KEY_LENGTH;
+    private final int ITERATIONS;
+    private final int KEY_LENGTH;
     private String ALGORITHM;
 
-    public void setALGORITHM(String ALGORITHM) {
-        this.ALGORITHM = ALGORITHM;
+    public void setAlgorithm(String algorithm) {
+        this.ALGORITHM = algorithm;
     }
 
     public PasswordEncryption() {
@@ -50,7 +50,7 @@ public class PasswordEncryption {
 
     public boolean verifyPassword(String password, String salt, String key) throws InvalidKeySpecException, NoSuchAlgorithmException {
         Optional<String> hashedPassword = hashPassword(password, salt);
-        if (!hashedPassword.get().equals(key)) {
+        if (!key.equals(hashedPassword.get())) {
             return false;
         }
         hashedPassword.get();

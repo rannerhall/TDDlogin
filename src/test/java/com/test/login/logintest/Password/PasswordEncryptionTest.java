@@ -14,7 +14,7 @@ class PasswordEncryptionTest {
     private String key;
     private String password;
     private String salt;
-    private PasswordEncryption passwordEncryption = new PasswordEncryption();
+    private final PasswordEncryption passwordEncryption = new PasswordEncryption();
 
     @BeforeEach
     void setUpHashPassword() throws InvalidKeySpecException, NoSuchAlgorithmException {
@@ -32,22 +32,19 @@ class PasswordEncryptionTest {
     @Test
     void fail_if_salt_is_null() throws InvalidKeySpecException, NoSuchAlgorithmException {
         salt = null;
-        Optional<String> testResult = passwordEncryption.hashPassword(password, salt);
+        Optional<String> testResult = passwordEncryption.hashPassword(password, null);
         assertTrue(testResult.isEmpty());
     }
 
     @Test
     void fail_if_password_is_null() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        password = null;
-        Optional<String> testResult = passwordEncryption.hashPassword(password, salt);
+        Optional<String> testResult = passwordEncryption.hashPassword(null, salt);
         assertTrue(testResult.isEmpty());
     }
 
     @Test
     void fail_if_password_and_salt_is_null() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        password = null;
-        salt = null;
-        Optional<String> testResult = passwordEncryption.hashPassword(password, salt);
+        Optional<String> testResult = passwordEncryption.hashPassword(null, null);
         assertTrue(testResult.isEmpty());
     }
 
@@ -76,7 +73,7 @@ class PasswordEncryptionTest {
 
     @Test
     void check_that_a_NoSuchAlgorithm_Exception_will_throw_with_not_valid_algorithm() {
-        passwordEncryption.setALGORITHM("");
+        passwordEncryption.setAlgorithm("");
         assertThrows(NoSuchAlgorithmException.class, () -> {
             passwordEncryption.hashPassword(password, salt);
         });

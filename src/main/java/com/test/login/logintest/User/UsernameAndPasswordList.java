@@ -1,20 +1,16 @@
 package com.test.login.logintest.User;
 
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
+@Component
+@NoArgsConstructor
+@Setter
 public class UsernameAndPasswordList {
-    List<User> users;
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-    public UsernameAndPasswordList() {
-    }
+    private List<User> users;
 
     public boolean checkIfUserAndPasswordMatchUserInList(String username, String password) {
         boolean result = false;

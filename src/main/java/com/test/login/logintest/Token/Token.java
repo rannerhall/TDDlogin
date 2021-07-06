@@ -1,5 +1,10 @@
 package com.test.login.logintest.Token;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Token {
     private String token;
 
@@ -7,16 +12,8 @@ public class Token {
         this.token = token;
     }
 
-    String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     public boolean tokenIsPresent() {
-        return token != null && token.getClass().equals(String.class);
+        return token != null;
     }
 
 }

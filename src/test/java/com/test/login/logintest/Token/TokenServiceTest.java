@@ -7,13 +7,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TokenServiceTest {
-    private TokenService tokenService = new TokenService();
+    private final TokenService tokenService = new TokenService();
     private Token token;
-    private User user;
 
     @BeforeEach
     void setUpTokenServiceTest() {
-        user = new User("Anna", "losen");
+        User user = new User("Anna", "losen");
         token = tokenService.createValidToken(user.getUsername());
     }
 

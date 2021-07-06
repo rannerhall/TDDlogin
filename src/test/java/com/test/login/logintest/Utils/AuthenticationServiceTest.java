@@ -16,13 +16,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AuthenticationServiceTest {
     private Token token;
-    private TokenService tokenService = new TokenService();
-    private UsernameAndPasswordList usernameAndPasswordList = new UsernameAndPasswordList();
-    private AuthenticationService authenticationService = new AuthenticationService(usernameAndPasswordList, tokenService);
-    private Permission permission = new Permission();
-    private User user = new User("Anna", "losen");
-    private List<User> userList = new ArrayList<>();
-    private HashMap<Token, String> tokenList = new HashMap<>();
+    private final TokenService tokenService = new TokenService();
+    private final UsernameAndPasswordList usernameAndPasswordList = new UsernameAndPasswordList();
+    private final AuthenticationService authenticationService = new AuthenticationService(usernameAndPasswordList, tokenService);
+    private final Permission permission = new Permission();
+    private final User user = new User("Anna", "losen");
+    private final List<User> userList = new ArrayList<>();
+    private final HashMap<Token, String> tokenList = new HashMap<>();
 
     @BeforeEach
     void setUp() {
@@ -44,7 +44,7 @@ class AuthenticationServiceTest {
     @Test
     void token_has_not_resource_and_scope_throws_new_runtime_exception() {
         assertThrows(RuntimeException.class, () -> {
-            authenticationService.returnPermissionOfUser("", token).contains("");
+            authenticationService.returnPermissionOfUser("", token);
         });
     }
 }

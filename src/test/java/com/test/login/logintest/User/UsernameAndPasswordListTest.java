@@ -9,8 +9,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UsernameAndPasswordListTest {
-    private Object[] expectedUsers = new Object[3];
-    private UsernameAndPasswordList userList = new UsernameAndPasswordList();
+    private final Object[] expectedUsers = new Object[3];
+    private final UsernameAndPasswordList userList = new UsernameAndPasswordList();
     private List<User> users;
 
     @BeforeEach

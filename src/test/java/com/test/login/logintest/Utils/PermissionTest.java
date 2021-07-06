@@ -9,22 +9,25 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PermissionTest {
-    private Permission permission = new Permission();
+    private final Permission permission = new Permission();
     private User user;
+    private static final String READ = "READ";
+    private static final String WRITE = "WRITE";
+    private static final String ACCOUNT = "ACCOUNT";
 
     @BeforeEach
     void setUp() {
         user = new User("Berit", "123456");
-        permission.setScope("READ");
-        permission.setScope("WRITE");
-        permission.setResource("ACCOUNT");
+        permission.setScope(READ);
+        permission.setScope(WRITE);
+        permission.setResource(ACCOUNT);
     }
 
     @Test
     void check_if_permissions_is_created() {
-        assertTrue(permission.getScope().contains("READ"));
-        assertTrue(permission.getScope().contains("WRITE"));
-        assertThat(permission.getResource(), is("ACCOUNT"));
+        assertTrue(permission.getScope().contains(READ));
+        assertTrue(permission.getScope().contains(WRITE));
+        assertThat(permission.getResource(), is(ACCOUNT));
     }
 
     @Test
